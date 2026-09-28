@@ -1,36 +1,113 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# SOLVED Website
+
+Corporate website for SOLVED, built with Next.js, TypeScript and Tailwind CSS.
+
+## Tech Stack
+
+- Next.js (App Router)
+- TypeScript
+- Tailwind CSS
+- Docker
 
 ## Getting Started
 
-First, run the development server:
+### Requirements
+
+- Node.js 20 or later
+- npm
+
+### Run locally
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000 in your browser. The page updates as you edit files.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Build for production
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm start
+```
 
-## Learn More
+## Run with Docker
 
-To learn more about Next.js, take a look at the following resources:
+Docker Desktop must be running first.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+docker compose up -d --build
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+The site is served at http://localhost:3000.
 
-## Deploy on Vercel
+Useful commands:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+docker compose down       # stop and remove the container
+docker compose logs -f    # watch live logs
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Always use `--build` after changing code, otherwise Docker reuses the old image.
+
+The container restarts automatically if it stops unexpectedly.
+
+## Environment Variables
+
+Copy the template and fill in real values:
+
+```bash
+cp .env.example .env
+```
+
+| Variable | Purpose |
+|---|---|
+| `NEXT_PUBLIC_GA_MEASUREMENT_ID` | Google Analytics 4 ID. Analytics stays inactive while this is empty. |
+
+Never commit the `.env` file. Only `.env.example` is committed.
+
+## Project Structure
+
+```
+src/
+├── app/            Pages and routes (each folder is a URL)
+│   ├── services/[slug]/     Individual service pages
+│   ├── portfolio/[slug]/    Individual case study pages
+│   ├── careers/[slug]/      Individual job pages
+│   ├── sitemap.ts           Generates sitemap.xml
+│   └── robots.ts            Generates robots.txt
+├── components/     Reusable UI (Header, Footer, Hero, cards, forms)
+├── content/        Site content as data files
+└── lib/            Helpers (analytics)
+```
+
+## Managing Content
+
+Content lives in `src/content/`, separate from the page layout. To add or edit content, change the data file and the pages update automatically:
+
+| File | Controls |
+|---|---|
+| `services.ts` | Services grid and service detail pages |
+| `industries.ts` | Industries section and page |
+| `portfolio.ts` | Featured projects and case studies |
+| `testimonials.ts` | Client testimonials |
+| `team.ts` | Team members on the About page |
+| `careers.ts` | Open job positions |
+| `techStack.ts` | Technologies section |
+| `process.ts` | Process steps |
+| `whySolved.ts` | "Why SOLVED" pillars |
+
+To add a new service, add one object to the array in `services.ts`. Its page, its card on the homepage, and its sitemap entry are generated automatically.
+
+## Current Status
+
+Placeholder content is still in use for: client logos, testimonials, team members, portfolio projects, stats and contact details. Replace these in `src/content/` and the relevant components once real information is available.
+
+The Contact, Quote and Job Application forms currently log submissions to the browser console only. They still need a backend or email service to deliver submissions.
+
+## Pages
+
+Home, About, Services, Industries, Portfolio, Careers, Contact, Request a Quote, Privacy Policy, Terms & Conditions.
+
+Not yet built: Insights (blog) and CMS/admin.
