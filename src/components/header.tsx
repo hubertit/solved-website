@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { trackEvent } from "@/lib/analytics";
 
 const navLinks = [
   { label: "Home", href: "/" },
@@ -33,12 +34,13 @@ export default function Header() {
 
         <Link
           href="/request-a-quote"
+          onClick={() => trackEvent("cta_click", { location: "header" })}
           className="hidden md:inline-flex items-center rounded-full bg-black px-5 py-2 text-sm font-medium text-white transition-colors hover:bg-zinc-800 dark:bg-white dark:text-black dark:hover:bg-zinc-200"
         >
           Get Started
         </Link>
 
-        {/* Hamburger button — only visible below md breakpoint */}
+        {/* Hamburger button, only visible below md breakpoint */}
         <button
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           className="md:hidden inline-flex items-center justify-center rounded p-2"
@@ -46,12 +48,10 @@ export default function Header() {
           aria-expanded={isMenuOpen}
         >
           {isMenuOpen ? (
-            // X icon (menu is open)
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <path d="M18 6L6 18M6 6l12 12" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           ) : (
-            // Hamburger icon (menu is closed)
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <path d="M3 12h18M3 6h18M3 18h18" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
@@ -59,7 +59,7 @@ export default function Header() {
         </button>
       </div>
 
-      {/* Mobile menu panel — only rendered when open */}
+      {/* Mobile menu panel, only rendered when open */}
       {isMenuOpen && (
         <nav className="md:hidden flex flex-col gap-1 border-t border-black/[.08] bg-white px-6 py-4 dark:border-white/[.1] dark:bg-black">
           {navLinks.map((link) => (
@@ -74,7 +74,10 @@ export default function Header() {
           ))}
           <Link
             href="/request-a-quote"
-            onClick={() => setIsMenuOpen(false)}
+            onClick={() => {
+              trackEvent("cta_click", { location: "mobile_menu" });
+              setIsMenuOpen(false);
+            }}
             className="mt-3 inline-flex items-center justify-center rounded-full bg-black px-5 py-3 text-sm font-medium text-white dark:bg-white dark:text-black"
           >
             Get Started
