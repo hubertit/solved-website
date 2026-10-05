@@ -10,15 +10,8 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const service = services.find((s) => s.slug === slug);
-
-  if (!service) {
-    return { title: "Service Not Found | SOLVED" };
-  }
-
-  return {
-    title: `${service.title} | SOLVED`,
-    description: service.shortDescription,
-  };
+  if (!service) return { title: "Service Not Found | SOLVED" };
+  return { title: `${service.title} | SOLVED`, description: service.shortDescription };
 }
 
 export default async function ServiceDetailPage({
@@ -28,17 +21,12 @@ export default async function ServiceDetailPage({
 }) {
   const { slug } = await params;
   const service = services.find((s) => s.slug === slug);
-
-  if (!service) {
-    notFound();
-  }
+  if (!service) notFound();
 
   return (
     <div className="mx-auto max-w-3xl px-6 py-24">
-      <p className="text-sm font-medium text-zinc-500">Service</p>
-      <h1 className="mt-2 text-4xl font-semibold tracking-tight">
-        {service.title}
-      </h1>
+      <p className="text-sm font-medium text-[var(--brand-blue)]">Service</p>
+      <h1 className="mt-2 text-4xl font-semibold tracking-tight">{service.title}</h1>
       <p className="mt-6 text-lg text-zinc-600 dark:text-zinc-400">
         {service.shortDescription}
       </p>
@@ -46,18 +34,12 @@ export default async function ServiceDetailPage({
       <div className="mt-10 space-y-8">
         <div>
           <h2 className="text-lg font-semibold">The Problem</h2>
-          <p className="mt-2 text-zinc-600 dark:text-zinc-400">
-            {service.problem}
-          </p>
+          <p className="mt-2 text-zinc-600 dark:text-zinc-400">{service.problem}</p>
         </div>
-
         <div>
           <h2 className="text-lg font-semibold">What We Deliver</h2>
-          <p className="mt-2 text-zinc-600 dark:text-zinc-400">
-            {service.delivers}
-          </p>
+          <p className="mt-2 text-zinc-600 dark:text-zinc-400">{service.delivers}</p>
         </div>
-
         <div>
           <h2 className="text-lg font-semibold">Typical Use Cases</h2>
           <ul className="mt-2 list-disc pl-5 text-zinc-600 dark:text-zinc-400">
@@ -70,7 +52,7 @@ export default async function ServiceDetailPage({
 
       <Link
         href="/request-a-quote"
-        className="mt-12 inline-flex items-center justify-center rounded-full bg-black px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-zinc-800 dark:bg-white dark:text-black dark:hover:bg-zinc-200"
+        className="mt-12 inline-flex items-center justify-center rounded-full bg-[var(--brand-blue)] px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-blue-700"
       >
         Start a Project
       </Link>

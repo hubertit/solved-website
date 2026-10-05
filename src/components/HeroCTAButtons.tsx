@@ -9,14 +9,14 @@ export default function HeroCTAButtons() {
       <Link
         href="/request-a-quote"
         onClick={() => trackEvent("cta_click", { location: "hero_primary" })}
-        className="inline-flex items-center justify-center rounded-full bg-black px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-zinc-800 dark:bg-white dark:text-black dark:hover:bg-zinc-200"
+        className="inline-flex items-center justify-center rounded-full bg-[var(--brand-blue)] px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-blue-700"
       >
         Start a Project
       </Link>
       <Link
         href="/portfolio"
         onClick={() => trackEvent("cta_click", { location: "hero_secondary" })}
-        className="inline-flex items-center justify-center rounded-full border border-black/[.15] px-6 py-3 text-sm font-medium transition-colors hover:bg-black/[.04] dark:border-white/[.2] dark:hover:bg-white/[.06]"
+        className="inline-flex items-center justify-center rounded-full border border-white/40 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-white/10"
       >
         Explore Our Work
       </Link>

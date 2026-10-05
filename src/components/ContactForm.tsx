@@ -45,7 +45,7 @@ export default function ContactForm() {
     <form onSubmit={handleSubmit} className="space-y-5">
       <div>
         <label htmlFor="fullName" className="block text-sm font-medium">
-          Full Name *
+          Full Name 
         </label>
         <input
           id="fullName"
@@ -74,7 +74,7 @@ export default function ContactForm() {
 
       <div>
         <label htmlFor="email" className="block text-sm font-medium">
-          Email *
+          Email 
         </label>
         <input
           id="email"
@@ -103,7 +103,7 @@ export default function ContactForm() {
 
       <div>
         <label htmlFor="service" className="block text-sm font-medium">
-          Service *
+          Service 
         </label>
         <select
           id="service"
@@ -138,7 +138,7 @@ export default function ContactForm() {
 
       <div>
         <label htmlFor="description" className="block text-sm font-medium">
-          Project Description *
+          Project Description 
         </label>
         <textarea
           id="description"
@@ -167,7 +167,7 @@ export default function ContactForm() {
 
       <button
         type="submit"
-        className="w-full rounded-full bg-black px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-zinc-800 dark:bg-white dark:text-black dark:hover:bg-zinc-200"
+        className="w-full rounded-full bg-[var(--brand-blue)] px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-blue-700"
       >
         Send Inquiry
       </button>

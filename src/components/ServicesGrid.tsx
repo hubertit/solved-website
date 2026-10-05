@@ -19,13 +19,13 @@ export default function ServicesGrid() {
           <Link
             key={service.slug}
             href={`/services/${service.slug}`}
-            className="group rounded-2xl border border-black/[.08] p-6 transition-colors hover:border-black/[.2] dark:border-white/[.1] dark:hover:border-white/[.25]"
+            className="group rounded-2xl border border-black/[.08] p-6 transition-colors hover:border-[var(--brand-blue)]/40 dark:border-white/[.1]"
           >
             <h3 className="text-lg font-semibold">{service.title}</h3>
             <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
               {service.shortDescription}
             </p>
-            <span className="mt-4 inline-block text-sm font-medium text-zinc-500 group-hover:text-black dark:group-hover:text-white">
+            <span className="mt-4 inline-block text-sm font-medium text-zinc-500 group-hover:text-[var(--brand-blue)]">
               Learn more →
             </span>
           </Link>

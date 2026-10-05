@@ -13,11 +13,11 @@ export default function Clients() {
         <p className="text-center text-sm font-medium text-zinc-500 dark:text-zinc-400">
           Trusted by organizations across Rwanda and beyond
         </p>
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-x-12 gap-y-6">
+        <div className="mt-8 grid grid-cols-2 gap-6 sm:grid-cols-5">
           {clientPlaceholders.map((client) => (
             <div
               key={client}
-              className="flex h-12 w-32 items-center justify-center rounded border border-dashed border-black/[.15] text-xs text-zinc-400 dark:border-white/[.15]"
+              className="flex h-16 items-center justify-center rounded-lg bg-zinc-50 text-sm font-semibold tracking-tight text-zinc-400 dark:bg-zinc-900 dark:text-zinc-600"
             >
               {client}
             </div>

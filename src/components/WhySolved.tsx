@@ -11,9 +11,12 @@ export default function WhySolved() {
         </div>
 
         <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {whySolvedPillars.map((pillar) => (
+          {whySolvedPillars.map((pillar, index) => (
             <div key={pillar.title}>
-              <h3 className="font-semibold">{pillar.title}</h3>
+              <p className="text-sm font-semibold text-[var(--brand-blue)]">
+                {String(index + 1).padStart(2, "0")}
+              </p>
+              <h3 className="mt-2 font-semibold">{pillar.title}</h3>
               <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
                 {pillar.description}
               </p>

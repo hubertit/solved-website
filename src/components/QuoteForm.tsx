@@ -45,7 +45,7 @@ export default function QuoteForm() {
     <form onSubmit={handleSubmit} className="space-y-5">
       <div>
         <label htmlFor="name" className="block text-sm font-medium">
-          Name *
+          Name 
         </label>
         <input
           id="name"
@@ -74,7 +74,7 @@ export default function QuoteForm() {
 
       <div>
         <label htmlFor="email" className="block text-sm font-medium">
-          Email *
+          Email 
         </label>
         <input
           id="email"
@@ -103,7 +103,7 @@ export default function QuoteForm() {
 
       <div>
         <label htmlFor="need" className="block text-sm font-medium">
-          What do you need? *
+          What do you need? 
         </label>
         <select
           id="need"
@@ -128,7 +128,7 @@ export default function QuoteForm() {
 
       <div>
         <label htmlFor="description" className="block text-sm font-medium">
-          Project Description *
+          Project Description 
         </label>
         <textarea
           id="description"
@@ -171,7 +171,7 @@ export default function QuoteForm() {
 
       <button
         type="submit"
-        className="w-full rounded-full bg-black px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-zinc-800 dark:bg-white dark:text-black dark:hover:bg-zinc-200"
+        className="w-full rounded-full bg-[var(--brand-blue)] px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-blue-700"
       >
         Submit Request
       </button>

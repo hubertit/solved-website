@@ -3,17 +3,16 @@ import ProjectCard from "@/components/ProjectCard";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "About Us | SOLVED",
+  title: "Our Portfolio | SOLVED",
   description:
-    "Learn about SOLVED's mission, vision and approach to building technology that solves real business problems.",
+    "See how SOLVED has helped businesses and organizations solve real problems through custom software, mobile apps and digital platforms.",
 };
+
 export default function PortfolioPage() {
   return (
     <div className="mx-auto max-w-6xl px-6 py-24">
       <div className="text-center">
-        <h1 className="text-4xl font-semibold tracking-tight">
-          Our Portfolio
-        </h1>
+        <h1 className="text-4xl font-semibold tracking-tight">Our Portfolio</h1>
         <p className="mx-auto mt-4 max-w-2xl text-zinc-600 dark:text-zinc-400">
           A look at how we&apos;ve helped organizations solve real problems.
         </p>

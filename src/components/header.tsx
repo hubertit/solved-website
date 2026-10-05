@@ -3,19 +3,12 @@
 import { useState } from "react";
 import Link from "next/link";
 import { trackEvent } from "@/lib/analytics";
-
-const navLinks = [
-  { label: "Home", href: "/" },
-  { label: "About", href: "/about" },
-  { label: "Services", href: "/services" },
-  { label: "Industries", href: "/industries" },
-  { label: "Portfolio", href: "/portfolio" },
-  { label: "Insights", href: "/insights" },
-  { label: "Careers", href: "/careers" },
-];
+import { services } from "@/content/services";
+import { industries } from "@/content/industries";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState<"services" | "industries" | null>(null);
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-black/[.08] bg-white/80 backdrop-blur dark:border-white/[.1] dark:bg-black/80">
@@ -25,22 +18,82 @@ export default function Header() {
         </Link>
 
         <nav className="hidden md:flex items-center gap-8 text-sm font-medium">
-          {navLinks.map((link) => (
-            <Link key={link.href} href={link.href} className="hover:text-zinc-500">
-              {link.label}
+          <Link href="/" className="hover:text-[var(--brand-blue)]">
+            Home
+          </Link>
+          <Link href="/about" className="hover:text-[var(--brand-blue)]">
+            About
+          </Link>
+
+          <div
+            className="relative"
+            onMouseEnter={() => setOpenDropdown("services")}
+            onMouseLeave={() => setOpenDropdown(null)}
+          >
+            <Link href="/services" className="hover:text-[var(--brand-blue)]">
+              Services
             </Link>
-          ))}
+            {openDropdown === "services" && (
+              <div className="absolute left-0 top-full pt-2">
+                <div className="w-64 rounded-xl border border-black/[.08] bg-white p-2 shadow-lg dark:border-white/[.1] dark:bg-zinc-900">
+                  {services.map((service) => (
+                    <Link
+                      key={service.slug}
+                      href={`/services/${service.slug}`}
+                      className="block rounded-lg px-3 py-2 text-sm hover:bg-zinc-50 dark:hover:bg-zinc-800"
+                    >
+                      {service.title}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+
+          <div
+            className="relative"
+            onMouseEnter={() => setOpenDropdown("industries")}
+            onMouseLeave={() => setOpenDropdown(null)}
+          >
+            <Link href="/industries" className="hover:text-[var(--brand-blue)]">
+              Industries
+            </Link>
+            {openDropdown === "industries" && (
+              <div className="absolute left-0 top-full pt-2">
+                <div className="w-64 rounded-xl border border-black/[.08] bg-white p-2 shadow-lg dark:border-white/[.1] dark:bg-zinc-900">
+                  {industries.map((industry) => (
+                    <Link
+                      key={industry.slug}
+                      href={`/industries/${industry.slug}`}
+                      className="block rounded-lg px-3 py-2 text-sm hover:bg-zinc-50 dark:hover:bg-zinc-800"
+                    >
+                      {industry.title}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+
+          <Link href="/portfolio" className="hover:text-[var(--brand-blue)]">
+            Portfolio
+          </Link>
+          <Link href="/insights" className="hover:text-[var(--brand-blue)]">
+            Insights
+          </Link>
+          <Link href="/careers" className="hover:text-[var(--brand-blue)]">
+            Careers
+          </Link>
         </nav>
 
         <Link
           href="/request-a-quote"
           onClick={() => trackEvent("cta_click", { location: "header" })}
-          className="hidden md:inline-flex items-center rounded-full bg-black px-5 py-2 text-sm font-medium text-white transition-colors hover:bg-zinc-800 dark:bg-white dark:text-black dark:hover:bg-zinc-200"
+          className="hidden md:inline-flex items-center rounded-full bg-[var(--brand-navy)] px-5 py-2 text-sm font-medium text-white transition-colors hover:bg-[var(--brand-blue)]"
         >
           Get Started
         </Link>
 
-        {/* Hamburger button, only visible below md breakpoint */}
         <button
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           className="md:hidden inline-flex items-center justify-center rounded p-2"
@@ -59,15 +112,22 @@ export default function Header() {
         </button>
       </div>
 
-      {/* Mobile menu panel, only rendered when open */}
       {isMenuOpen && (
         <nav className="md:hidden flex flex-col gap-1 border-t border-black/[.08] bg-white px-6 py-4 dark:border-white/[.1] dark:bg-black">
-          {navLinks.map((link) => (
+          {[
+            { label: "Home", href: "/" },
+            { label: "About", href: "/about" },
+            { label: "Services", href: "/services" },
+            { label: "Industries", href: "/industries" },
+            { label: "Portfolio", href: "/portfolio" },
+            { label: "Insights", href: "/insights" },
+            { label: "Careers", href: "/careers" },
+          ].map((link) => (
             <Link
               key={link.href}
               href={link.href}
               onClick={() => setIsMenuOpen(false)}
-              className="py-3 text-base font-medium hover:text-zinc-500"
+              className="py-3 text-base font-medium hover:text-[var(--brand-blue)]"
             >
               {link.label}
             </Link>
@@ -78,7 +138,7 @@ export default function Header() {
               trackEvent("cta_click", { location: "mobile_menu" });
               setIsMenuOpen(false);
             }}
-            className="mt-3 inline-flex items-center justify-center rounded-full bg-black px-5 py-3 text-sm font-medium text-white dark:bg-white dark:text-black"
+            className="mt-3 inline-flex items-center justify-center rounded-full bg-[var(--brand-navy)] px-5 py-3 text-sm font-medium text-white hover:bg-[var(--brand-blue)]"
           >
             Get Started
           </Link>

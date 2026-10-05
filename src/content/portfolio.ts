@@ -5,6 +5,7 @@ export interface Project {
   year: string;
   name: string;
   description: string;
+  image: string;
   technologies: string[];
   overview: string;
   challenge: string;
@@ -28,6 +29,7 @@ export const projects: Project[] = [
     name: "Digital Banking Platform",
     description:
       "A secure digital platform designed to simplify financial operations and improve customer access.",
+    image: "/images/project-banking.jpg",
     technologies: ["Next.js", "Node.js", "PostgreSQL"],
     overview:
       "SOLVED partnered with a financial services provider to modernize how customers access and manage their accounts online.",
@@ -60,6 +62,7 @@ export const projects: Project[] = [
     name: "School Management System",
     description:
       "A digital platform for schools to manage student records, attendance, grading and communication in one place.",
+    image: "/images/project-school.jpg",
     technologies: ["Next.js", "NestJS", "MySQL"],
     overview:
       "SOLVED built a centralized system to help an educational institution manage day-to-day academic operations digitally.",
@@ -92,6 +95,7 @@ export const projects: Project[] = [
     name: "Logistics Tracking Platform",
     description:
       "A real-time fleet and delivery tracking system that gives logistics companies visibility into their operations.",
+    image: "/images/project-logistics.jpg",
     technologies: ["React Native", "Node.js", "MongoDB"],
     overview:
       "SOLVED developed a real-time tracking system to give a logistics company full visibility into their fleet and delivery operations.",

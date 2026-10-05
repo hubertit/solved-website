@@ -10,15 +10,8 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const job = jobs.find((j) => j.slug === slug);
-
-  if (!job) {
-    return { title: "Position Not Found | SOLVED" };
-  }
-
-  return {
-    title: `${job.title} | Careers | SOLVED`,
-    description: job.description,
-  };
+  if (!job) return { title: "Position Not Found | SOLVED" };
+  return { title: `${job.title} | Careers | SOLVED`, description: job.description };
 }
 
 export default async function JobDetailPage({
@@ -28,22 +21,15 @@ export default async function JobDetailPage({
 }) {
   const { slug } = await params;
   const job = jobs.find((j) => j.slug === slug);
-
-  if (!job) {
-    notFound();
-  }
+  if (!job) notFound();
 
   return (
     <div className="mx-auto max-w-3xl px-6 py-24">
-      <p className="text-sm font-medium text-zinc-500">
+      <p className="text-sm font-medium text-[var(--brand-blue)]">
         {job.location} · {job.type}
       </p>
-      <h1 className="mt-2 text-4xl font-semibold tracking-tight">
-        {job.title}
-      </h1>
-      <p className="mt-6 text-lg text-zinc-600 dark:text-zinc-400">
-        {job.description}
-      </p>
+      <h1 className="mt-2 text-4xl font-semibold tracking-tight">{job.title}</h1>
+      <p className="mt-6 text-lg text-zinc-600 dark:text-zinc-400">{job.description}</p>
 
       <div className="mt-10 space-y-8">
         <div>
@@ -54,7 +40,6 @@ export default async function JobDetailPage({
             ))}
           </ul>
         </div>
-
         <div>
           <h2 className="text-lg font-semibold">Requirements</h2>
           <ul className="mt-2 list-disc pl-5 text-zinc-600 dark:text-zinc-400">

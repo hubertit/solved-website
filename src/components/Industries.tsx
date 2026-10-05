@@ -17,7 +17,7 @@ export default function Industries() {
         {industries.map((industry) => (
           <div
             key={industry.slug}
-            className="rounded-2xl border border-black/[.08] p-6 dark:border-white/[.1]"
+            className="rounded-2xl border border-black/[.08] p-6 transition-colors hover:border-[var(--brand-blue)]/40 dark:border-white/[.1]"
           >
             <h3 className="font-semibold">{industry.title}</h3>
             <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">

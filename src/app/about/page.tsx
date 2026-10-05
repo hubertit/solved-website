@@ -11,14 +11,11 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <div className="mx-auto max-w-3xl px-6 py-24">
-      {/* Company */}
       <div>
-        <p className="text-sm font-medium uppercase tracking-wide text-zinc-500 dark:text-zinc-400">
+        <p className="text-sm font-medium uppercase tracking-wide text-[var(--brand-blue)]">
           Company
         </p>
-        <h1 className="mt-2 text-4xl font-semibold tracking-tight">
-          About SOLVED
-        </h1>
+        <h1 className="mt-2 text-4xl font-semibold tracking-tight">About SOLVED</h1>
         <p className="mt-6 text-lg text-zinc-600 dark:text-zinc-400">
           SOLVED combines technology, creativity and business understanding
           to build digital solutions that solve real-world problems. We work
@@ -27,7 +24,6 @@ export default function AboutPage() {
         </p>
       </div>
 
-      {/* Mission & Vision */}
       <div className="mt-16 grid grid-cols-1 gap-8 sm:grid-cols-2">
         <div>
           <h2 className="text-lg font-semibold">Our Mission</h2>
@@ -45,7 +41,6 @@ export default function AboutPage() {
         </div>
       </div>
 
-      {/* Our Approach */}
       <div className="mt-16">
         <h2 className="text-lg font-semibold">Our Approach</h2>
         <p className="mt-2 text-zinc-600 dark:text-zinc-400">
@@ -55,21 +50,18 @@ export default function AboutPage() {
         </p>
       </div>
 
-      {/* Team */}
-      {/* Team */}
-<div className="mt-16">
-  <h2 className="text-lg font-semibold">Our Team</h2>
-  <p className="mt-2 text-zinc-600 dark:text-zinc-400">
-    SOLVED is made up of engineers, designers and consultants
-    passionate about solving real business problems through
-    technology.
-  </p>
-  <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-3">
-    {team.map((member) => (
-      <TeamCard key={member.slug} member={member} />
-    ))}
-  </div>
-</div>
+      <div className="mt-16">
+        <h2 className="text-lg font-semibold">Our Team</h2>
+        <p className="mt-2 text-zinc-600 dark:text-zinc-400">
+          SOLVED is made up of engineers, designers and consultants
+          passionate about solving real business problems through technology.
+        </p>
+        <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-3">
+          {team.map((member) => (
+            <TeamCard key={member.slug} member={member} />
+          ))}
+        </div>
+      </div>
     </div>
   );
 }

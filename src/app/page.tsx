@@ -9,6 +9,7 @@ import WhySolved from "@/components/WhySolved";
 import TechStack from "@/components/TechStack";
 import Process from "@/components/Process";
 import Testimonials from "@/components/Testimonials";
+import CTABanner from "@/components/CTABanner";
 
 export default function Home() {
   return (
@@ -24,6 +25,7 @@ export default function Home() {
       <TechStack />
       <Process />
       <Testimonials />
+      <CTABanner />
     </div>
   );
 }

@@ -31,25 +31,34 @@ const footerColumns = [
 
 export default function Footer() {
   return (
-    <footer className="border-t border-black/[.08] bg-zinc-50 dark:border-white/[.1] dark:bg-black">
-      <div className="mx-auto max-w-6xl px-6 py-16 text-sm text-zinc-600 dark:text-zinc-400">
+    <footer className="bg-[var(--brand-navy)] text-sm text-slate-400">
+      <div className="mx-auto max-w-6xl px-6 py-16">
         <div className="grid grid-cols-2 gap-8 sm:grid-cols-4">
           <div className="col-span-2 sm:col-span-1">
-            <p className="font-semibold text-black dark:text-white">SOLVED</p>
-            <p className="mt-2 max-w-sm">
+            <p className="text-lg font-semibold text-white">SOLVED</p>
+            <p className="mt-3 max-w-sm text-slate-400">
               Technology that solves real business problems.
             </p>
+            <Link
+              href="/request-a-quote"
+              className="mt-6 inline-flex items-center justify-center rounded-full bg-[var(--brand-blue)] px-5 py-2 text-xs font-medium text-white transition-colors hover:bg-blue-700"
+            >
+              Start a Project
+            </Link>
           </div>
 
           {footerColumns.map((column) => (
             <div key={column.title}>
-              <h3 className="font-semibold text-black dark:text-white">
+              <h3 className="text-xs font-semibold uppercase tracking-wide text-slate-500">
                 {column.title}
               </h3>
-              <ul className="mt-3 space-y-2">
+              <ul className="mt-4 space-y-3">
                 {column.links.map((link) => (
                   <li key={link.href}>
-                    <Link href={link.href} className="hover:text-black dark:hover:text-white">
+                    <Link
+                      href={link.href}
+                      className="transition-colors hover:text-white"
+                    >
                       {link.label}
                     </Link>
                   </li>
@@ -59,13 +68,19 @@ export default function Footer() {
           ))}
         </div>
 
-        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-black/[.08] pt-8 dark:border-white/[.1] sm:flex-row">
+        <div className="mt-16 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 sm:flex-row">
           <p>© {new Date().getFullYear()} SOLVED. All Rights Reserved.</p>
           <div className="flex gap-6">
-            <Link href="/privacy-policy" className="hover:text-black dark:hover:text-white">
+            <Link
+              href="/privacy-policy"
+              className="transition-colors hover:text-white"
+            >
               Privacy Policy
             </Link>
-            <Link href="/terms-and-conditions" className="hover:text-black dark:hover:text-white">
+            <Link
+              href="/terms-and-conditions"
+              className="transition-colors hover:text-white"
+            >
               Terms & Conditions
             </Link>
           </div>

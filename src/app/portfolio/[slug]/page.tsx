@@ -10,15 +10,8 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const project = projects.find((p) => p.slug === slug);
-
-  if (!project) {
-    return { title: "Project Not Found | SOLVED" };
-  }
-
-  return {
-    title: `${project.name} | SOLVED`,
-    description: project.description,
-  };
+  if (!project) return { title: "Project Not Found | SOLVED" };
+  return { title: `${project.name} | SOLVED`, description: project.description };
 }
 
 export default async function ProjectDetailPage({
@@ -28,45 +21,29 @@ export default async function ProjectDetailPage({
 }) {
   const { slug } = await params;
   const project = projects.find((p) => p.slug === slug);
-
-  if (!project) {
-    notFound();
-  }
+  if (!project) notFound();
 
   return (
     <div className="mx-auto max-w-3xl px-6 py-24">
-      <p className="text-sm font-medium text-zinc-500">
+      <p className="text-sm font-medium text-[var(--brand-blue)]">
         {project.industry} · {project.year}
       </p>
-      <h1 className="mt-2 text-4xl font-semibold tracking-tight">
-        {project.name}
-      </h1>
-      <p className="mt-6 text-lg text-zinc-600 dark:text-zinc-400">
-        {project.overview}
-      </p>
+      <h1 className="mt-2 text-4xl font-semibold tracking-tight">{project.name}</h1>
+      <p className="mt-6 text-lg text-zinc-600 dark:text-zinc-400">{project.overview}</p>
 
       <div className="mt-10 space-y-8">
         <div>
           <h2 className="text-lg font-semibold">The Challenge</h2>
-          <p className="mt-2 text-zinc-600 dark:text-zinc-400">
-            {project.challenge}
-          </p>
+          <p className="mt-2 text-zinc-600 dark:text-zinc-400">{project.challenge}</p>
         </div>
-
         <div>
           <h2 className="text-lg font-semibold">Our Approach</h2>
-          <p className="mt-2 text-zinc-600 dark:text-zinc-400">
-            {project.approach}
-          </p>
+          <p className="mt-2 text-zinc-600 dark:text-zinc-400">{project.approach}</p>
         </div>
-
         <div>
           <h2 className="text-lg font-semibold">The Solution</h2>
-          <p className="mt-2 text-zinc-600 dark:text-zinc-400">
-            {project.solution}
-          </p>
+          <p className="mt-2 text-zinc-600 dark:text-zinc-400">{project.solution}</p>
         </div>
-
         <div>
           <h2 className="text-lg font-semibold">Key Features</h2>
           <ul className="mt-2 list-disc pl-5 text-zinc-600 dark:text-zinc-400">
@@ -75,19 +52,15 @@ export default async function ProjectDetailPage({
             ))}
           </ul>
         </div>
-
         <div>
           <h2 className="text-lg font-semibold">Technology</h2>
           <p className="mt-2 text-zinc-600 dark:text-zinc-400">
             {project.technologies.join(" | ")}
           </p>
         </div>
-
         <div>
           <h2 className="text-lg font-semibold">Results / Impact</h2>
-          <p className="mt-2 text-zinc-600 dark:text-zinc-400">
-            {project.results}
-          </p>
+          <p className="mt-2 text-zinc-600 dark:text-zinc-400">{project.results}</p>
         </div>
 
         {project.testimonial && (
@@ -95,9 +68,7 @@ export default async function ProjectDetailPage({
             <p className="text-zinc-700 dark:text-zinc-300">
               &ldquo;{project.testimonial.quote}&rdquo;
             </p>
-            <p className="mt-4 text-sm font-semibold">
-              {project.testimonial.name}
-            </p>
+            <p className="mt-4 text-sm font-semibold">{project.testimonial.name}</p>
             <p className="text-xs text-zinc-500 dark:text-zinc-400">
               {project.testimonial.position}
             </p>
@@ -107,7 +78,7 @@ export default async function ProjectDetailPage({
 
       <Link
         href="/request-a-quote"
-        className="mt-12 inline-flex items-center justify-center rounded-full bg-black px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-zinc-800 dark:bg-white dark:text-black dark:hover:bg-zinc-200"
+        className="mt-12 inline-flex items-center justify-center rounded-full bg-[var(--brand-blue)] px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-blue-700"
       >
         Start Your Project
       </Link>
