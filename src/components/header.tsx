@@ -3,8 +3,21 @@
 import { useState } from "react";
 import Link from "next/link";
 import { trackEvent } from "@/lib/analytics";
+<<<<<<< HEAD
 import { services } from "@/content/services";
 import { industries } from "@/content/industries";
+=======
+
+const navLinks = [
+  { label: "Home", href: "/" },
+  { label: "About", href: "/about" },
+  { label: "Services", href: "/services" },
+  { label: "Industries", href: "/industries" },
+  { label: "Portfolio", href: "/portfolio" },
+  { label: "Insights", href: "/insights" },
+  { label: "Careers", href: "/careers" },
+];
+>>>>>>> f3655f6adec572ae8c23029f23e6c540964aa3d3
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -89,11 +102,19 @@ export default function Header() {
         <Link
           href="/request-a-quote"
           onClick={() => trackEvent("cta_click", { location: "header" })}
+<<<<<<< HEAD
           className="hidden md:inline-flex items-center rounded-full bg-[var(--brand-navy)] px-5 py-2 text-sm font-medium text-white transition-colors hover:bg-[var(--brand-blue)]"
+=======
+          className="hidden md:inline-flex items-center rounded-full bg-black px-5 py-2 text-sm font-medium text-white transition-colors hover:bg-zinc-800 dark:bg-white dark:text-black dark:hover:bg-zinc-200"
+>>>>>>> f3655f6adec572ae8c23029f23e6c540964aa3d3
         >
           Get Started
         </Link>
 
+<<<<<<< HEAD
+=======
+        {/* Hamburger button, only visible below md breakpoint */}
+>>>>>>> f3655f6adec572ae8c23029f23e6c540964aa3d3
         <button
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           className="md:hidden inline-flex items-center justify-center rounded p-2"
@@ -112,6 +133,10 @@ export default function Header() {
         </button>
       </div>
 
+<<<<<<< HEAD
+=======
+      {/* Mobile menu panel, only rendered when open */}
+>>>>>>> f3655f6adec572ae8c23029f23e6c540964aa3d3
       {isMenuOpen && (
         <nav className="md:hidden flex flex-col gap-1 border-t border-black/[.08] bg-white px-6 py-4 dark:border-white/[.1] dark:bg-black">
           {[
@@ -138,7 +163,11 @@ export default function Header() {
               trackEvent("cta_click", { location: "mobile_menu" });
               setIsMenuOpen(false);
             }}
+<<<<<<< HEAD
             className="mt-3 inline-flex items-center justify-center rounded-full bg-[var(--brand-navy)] px-5 py-3 text-sm font-medium text-white hover:bg-[var(--brand-blue)]"
+=======
+            className="mt-3 inline-flex items-center justify-center rounded-full bg-black px-5 py-3 text-sm font-medium text-white dark:bg-white dark:text-black"
+>>>>>>> f3655f6adec572ae8c23029f23e6c540964aa3d3
           >
             Get Started
           </Link>
